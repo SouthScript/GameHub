@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0e14">
+  <meta name="description" content="GameHub — jogos online direto no navegador, sem download.">
+  <title>GameHub — Jogos online no navegador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        Hub de jogos · multiplayer · grátis
+      </div>
+
+      <h1 class="hero-title">
+        Jogue direto<br>
+        <span class="accent">no navegador</span>
+      </h1>
+
+      <p class="hero-sub">
+        Sem download, sem cadastro. Abra, escolha a sala e jogue em tempo real.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/games/shooter/" class="cta-primary">
+          <span class="play-icon">▶</span>
+          Jogar Arena .io
+        </a>
+        <button id="scroll-games" class="cta-secondary">Ver todos os jogos</button>
+      </div>
+
+      <div id="live-stats" class="live-stats">
+        <div class="stat">
+          <span id="stat-players" class="stat-value">—</span>
+          <span class="stat-label">jogadores</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span id="stat-rooms" class="stat-value">—</span>
+          <span class="stat-label">salas</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span id="stat-ping" class="stat-value">—</span>
+          <span class="stat-label">ms</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ JOGOS ============ -->
+  <main id="games">
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Disponíveis agora</h2>
+        <span class="section-line"></span>
+      </div>
+
+      <div class="games-grid">
+        <!-- Card principal: Arena .io -->
+        <a href="/games/shooter/" class="game-card featured">
+          <div class="game-preview">
+            <div class="preview-arena">
+              <div class="arena-wall" style="left: 38%; top: 30%; width: 24%; height: 5%;"></div>
+              <div class="arena-wall" style="left: 38%; top: 65%; width: 24%; height: 5%;"></div>
+              <div class="arena-wall" style="left: 20%; top: 45%; width: 4%; height: 22%;"></div>
+              <div class="arena-wall" style="left: 76%; top: 45%; width: 4%; height: 22%;"></div>
+
+              <div class="arena-player" style="left: 28%; top: 52%; --col:#22d3ee;">
+                <div class="hp"><div class="hp-fill" style="width:100%"></div></div>
+              </div>
+              <div class="arena-player" style="left: 68%; top: 42%; --col:#f472b6;">
+                <div class="hp"><div class="hp-fill" style="width:70%"></div></div>
+              </div>
+              <div class="arena-laser" style="left: 30%; top: 52%; width: 32%; transform: rotate(-8deg); --col:#22d3ee;"></div>
+              <div class="arena-bullet" style="left: 52%; top: 50%; --col:#22d3ee;"></div>
+            </div>
+            <div class="badge live">
+              <span class="live-dot"></span>
+              AO VIVO
+            </div>
+          </div>
+          <div class="game-info">
+            <h3>Arena .io</h3>
+            <p>Shooter multiplayer top-down. Entre numa sala, mate e não morra.</p>
+            <div class="game-tags">
+              <span>Multiplayer</span>
+              <span>4 Jogadores</span>
+              <span>4 Modos</span>
+            </div>
+            <div class="card-cta">Entrar →</div>
+          </div>
+        </a>
+
+        <!-- Air Hockey -->
+        <a href="/games/air-hockey/" class="game-card featured">
+          <div class="game-preview">
+            <div class="preview-hockey">
+              <div class="hockey-midline"></div>
+              <div class="hockey-circle"></div>
+              <div class="hockey-goal hockey-goal-left"></div>
+              <div class="hockey-goal hockey-goal-right"></div>
+              <div class="hockey-paddle" style="left: 25%; top: 50%; --col:#ff5c7a;"></div>
+              <div class="hockey-paddle" style="left: 75%; top: 40%; --col:#3fd0ff;"></div>
+              <div class="hockey-puck"></div>
+            </div>
+            <div class="badge live">
+              <span class="live-dot"></span>
+              AO VIVO
+            </div>
+          </div>
+          <div class="game-info">
+            <h3>Air Hockey</h3>
+            <p>Duelo de reflexos 1v1 com física de colisão em tempo real.</p>
+            <div class="game-tags">
+              <span>1v1</span>
+              <span>Online</span>
+              <span>Física Real</span>
+            </div>
+            <div class="card-cta">Entrar →</div>
+          </div>
+        </a>
+
+        <!-- 🆕 Minecraft Mini -->
+        <a href="/games/minecraft/" class="game-card featured">
+          <div class="game-preview">
+            <div class="preview-minecraft">
+              <div class="mc-sun"></div>
+              <!-- Blocos de grama -->
+              <div class="mc-block" style="left: 18%; top: 58%;"></div>
+              <div class="mc-block" style="left: 28%; top: 68%;"></div>
+              <div class="mc-block" style="left: 40%; top: 62%;"></div>
+              <div class="mc-block" style="left: 72%; top: 66%;"></div>
+              <div class="mc-block" style="left: 84%; top: 58%;"></div>
+              <!-- Blocos de terra -->
+              <div class="mc-block dirt" style="left: 34%; top: 78%;"></div>
+              <div class="mc-block dirt" style="left: 62%; top: 74%;"></div>
+              <!-- Blocos de pedra -->
+              <div class="mc-block stone" style="left: 52%; top: 40%;"></div>
+              <div class="mc-block stone" style="left: 64%; top: 48%;"></div>
+              <!-- Jogador -->
+              <div class="mc-player"></div>
+            </div>
+            <div class="badge live">
+              <span class="live-dot"></span>
+              AO VIVO
+            </div>
+          </div>
+          <div class="game-info">
+            <h3>Minecraft Mini</h3>
+            <p>Mundo 3D multiplayer. Quebre blocos, construa e explore.</p>
+            <div class="game-tags">
+              <span>Multiplayer</span>
+              <span>3D</span>
+              <span>Sandbox</span>
+            </div>
+            <div class="card-cta">Entrar →</div>
+          </div>
+        </a>
+
+        <!-- Campo Minado (preservado) -->
+        <div class="game-card soon">
+          <div class="game-preview soon-preview">
+            <div class="soon-icon">💣</div>
+          </div>
+          <div class="game-info">
+            <h3>Campo Minado</h3>
+            <p>O clássico puzzle de lógica com variações de tabuleiro.</p>
+            <div class="game-tags"><span>Single Player</span></div>
+          </div>
+          <div class="badge-soon">EM BREVE</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Feito com <span class="footer-accent">HTML</span>,
+      <span class="footer-accent">Canvas</span> e
+      <span class="footer-accent">Socket.IO</span>
+      · Hospedado no navegador
+    </p>
+    <p class="footer-hint">Pressione <kbd>Enter</kbd> para jogar</p>
+  </footer>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

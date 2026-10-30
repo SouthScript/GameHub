@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Arena .io</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div id="screen-lobby" class="screen active">
+    <div class="lobby-container">
+      <header class="lobby-header"><h1>🔫 Arena<span class="accent">.io</span></h1><p>Shooter multiplayer top-down</p></header>
+      <section class="panel">
+        <h2>Seu perfil</h2>
+        <div class="setup-row"><input id="name" type="text" maxlength="16" placeholder="Seu nome" autocomplete="off"><div id="color-picker" class="color-picker"></div></div>
+      </section>
+      <section class="panel">
+        <div class="panel-header"><h2>Salas disponíveis</h2><button id="refresh-rooms" class="icon-btn" title="Atualizar">⟳</button></div>
+        <div id="rooms-list" class="rooms-list"><p class="empty-msg">Carregando salas...</p></div>
+      </section>
+      <section class="lobby-actions">
+        <button id="create-room" class="btn-primary"><span>+ Criar sala</span></button>
+        <button id="quick-play" class="btn-secondary"><span>⚡ Jogo rápido</span></button>
+      </section>
+    </div>
+  </div>
+
+  <div id="screen-loading" class="screen">
+    <div class="loading-box"><div class="spinner"></div><p id="loading-text">Entrando...</p></div>
+  </div>
+
+  <div id="screen-game" class="screen">
+    <canvas id="canvas"></canvas>
+    <div id="mobile-joysticks" class="mobile-joysticks"></div>
+    <button id="leave-btn" class="leave-btn">← Sair</button>
+    <div id="conn-status" class="conn-status hidden"><div class="dot"></div><span id="conn-text">Reconectando...</span></div>
+    <div id="welcome-overlay" class="welcome-overlay"><h1 id="welcome-name">Bem-vindo!</h1><div id="countdown" class="countdown"></div></div>
+    
+    <!-- 🆕 Tela de Game Over limpa -->
+    <div id="game-over-overlay" class="welcome-overlay">
+      <h1 style="color: #fbbf24; text-shadow: 0 0 40px #fbbf24;">FIM DE JOGO</h1>
+      <p id="game-over-reason" style="color: #fff; font-size: 20px; margin-bottom: 10px;">Tempo esgotado!</p>
+      <h2 id="game-over-winner" style="color: #22d3ee; font-size: 40px; margin-bottom: 30px;">Jogador Venceu!</h2>
+      <div style="display: flex; gap: 15px;">
+        <button id="btn-restart" class="btn-primary" style="padding: 12px 30px; font-size: 16px;">Jogar Novamente</button>
+        <button id="btn-return-lobby" class="btn-ghost" style="padding: 12px 30px; font-size: 16px;">Sair da Sala</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-create" class="modal">
+  <div class="modal-card">
+    <h2>Criar nova sala</h2>
+    <p>Escolha o nome e o modo de jogo</p>
+    <input id="room-name" type="text" maxlength="20" placeholder="Ex: Duelo dos Cria" autocomplete="off">
+    <select id="room-mode" style="width: 100%; padding: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; color: #fff; margin-bottom: 20px; font-family: inherit; font-size: 14px; outline: none;">
+      <option value="score">🎯 Limite de Abates (10 Kills)</option>
+      <option value="time">⏱️ Limite de Tempo (2 Minutos)</option>
+      <option value="lms">💀 Último Sobrevivente</option>
+      <option value="infinite">♾️ Infinito</option>
+    </select>
+    <div class="modal-actions">
+      <button id="modal-cancel" class="btn-ghost">Cancelar</button>
+      <button id="modal-create-confirm" class="btn-primary">Criar e entrar</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="client.js"></script>
+</body>
+</html>

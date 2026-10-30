@@ -1,0 +1,8 @@
+# Pastas de dependências (muito pesadas)
+node_modules/
+
+# Arquivos do próprio sistema operacional ou editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

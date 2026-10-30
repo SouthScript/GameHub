@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Minecraft Mini — GameHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="canvas-container"></div>
+
+  <!-- ═══ BOTÃO SAIR (sempre visível) ═══ -->
+  <a href="/" id="back-link" aria-label="Voltar ao hub">← Sair</a>
+
+  <!-- ═══ HUD ═══ -->
+  <div id="hud" style="display:none">
+    <div id="crosshair">+</div>
+
+    <div id="hotbar">
+      <div class="slot" data-block="1" role="button" tabindex="0" aria-label="Grama"><span class="ico">🟩</span><span class="key">1</span></div>
+      <div class="slot" data-block="2" role="button" tabindex="0" aria-label="Terra"><span class="ico">🟫</span><span class="key">2</span></div>
+      <div class="slot" data-block="3" role="button" tabindex="0" aria-label="Pedra"><span class="ico">⬜</span><span class="key">3</span></div>
+      <div class="slot" data-block="4" role="button" tabindex="0" aria-label="Madeira"><span class="ico">🟤</span><span class="key">4</span></div>
+    </div>
+
+    <div id="help">WASD mover · Espaço pular · Clique Esq quebra · Clique Dir coloca · 1-4 trocar bloco</div>
+  </div>
+
+  <!-- ═══ CONTROLES MOBILE ═══ -->
+  <div id="mobile-controls" style="display:none">
+    <div id="joystick" aria-label="Joystick de movimento">
+      <div id="joystick-knob"></div>
+    </div>
+    <div id="action-buttons">
+      <button id="btn-jump" class="action-btn jump" aria-label="Pular">↑</button>
+      <button id="btn-place" class="action-btn place" aria-label="Colocar bloco">+</button>
+      <button id="btn-break" class="action-btn danger" aria-label="Quebrar bloco">×</button>
+    </div>
+  </div>
+
+  <!-- ═══ LOBBY ═══ -->
+  <div id="lobby">
+    <div class="lobby-card">
+      <h1>⛏️ Minecraft Mini</h1>
+      <p class="sub">Mundo multiplayer · 32×32×32 · quebre e construa</p>
+
+      <div class="field">
+        <label for="player-name">Seu nome</label>
+        <input id="player-name" type="text" maxlength="16" placeholder="Jogador" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label>Cor da camisa</label>
+        <div id="color-picker" class="color-picker">
+          <button type="button" class="color-swatch" data-color="#e74c3c" style="background:#e74c3c" aria-label="Vermelho"></button>
+          <button type="button" class="color-swatch" data-color="#f39c12" style="background:#f39c12" aria-label="Laranja"></button>
+          <button type="button" class="color-swatch" data-color="#f1c40f" style="background:#f1c40f" aria-label="Amarelo"></button>
+          <button type="button" class="color-swatch" data-color="#2ecc71" style="background:#2ecc71" aria-label="Verde"></button>
+          <button type="button" class="color-swatch active" data-color="#22d3ee" style="background:#22d3ee" aria-label="Ciano"></button>
+          <button type="button" class="color-swatch" data-color="#3498db" style="background:#3498db" aria-label="Azul"></button>
+          <button type="button" class="color-swatch" data-color="#9b59b6" style="background:#9b59b6" aria-label="Roxo"></button>
+          <button type="button" class="color-swatch" data-color="#e91e63" style="background:#e91e63" aria-label="Rosa"></button>
+          <button type="button" class="color-swatch" data-color="#ecf0f1" style="background:#ecf0f1" aria-label="Branco"></button>
+          <button type="button" class="color-swatch" data-color="#2c3e50" style="background:#2c3e50" aria-label="Preto"></button>
+          <button type="button" class="color-swatch" data-color="#8b5a3c" style="background:#8b5a3c" aria-label="Marrom"></button>
+          <button type="button" class="color-swatch" data-color="#a3e635" style="background:#a3e635" aria-label="Lima"></button>
+        </div>
+      </div>
+
+      <button id="create-btn" class="primary-btn">＋ Criar novo mundo</button>
+
+      <div class="rooms-header">
+        <span>Salas disponíveis</span>
+        <button id="refresh-btn" class="mini-btn" aria-label="Atualizar salas">↻</button>
+      </div>
+      <div id="room-list"><div class="empty">Carregando…</div></div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="client.js"></script>
+</body>
+</html>
